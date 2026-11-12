@@ -22,7 +22,10 @@ public interface RegistroParqueoRepository extends JpaRepository<RegistroParqueo
 	@Query("select count(r) > 0 from RegistroParqueo r where r.espacio = :espacio")
 	boolean existsByEspacio(@Param("espacio") EspacioParqueo espacio);
 
+	
 	Optional<RegistroParqueo> findByVehiculoPlacaAndFechaSalidaIsNull(String placa);
+	
+	List<RegistroParqueo> findAllByOrderByFechaEntradaDesc(); 
 
 	List<RegistroParqueo> findByFechaSalidaIsNullOrderByFechaEntradaDesc();
 
